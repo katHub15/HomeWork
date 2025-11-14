@@ -14,5 +14,19 @@ public class Main {
         Tasks.checkNumber(0);
         System.out.println("\n7 задание");
         System.out.println(Tasks.checkNumb(0));
+        System.out.println("\n8 задание");
+        Tasks.printString(2,"привет");
+        System.out.println("\n9 задание");
+        System.out.println(Tasks.checkYear(2400));
+        System.out.println("\n10 задание");
+        Tasks.changeArray();
+        System.out.println("\n11 задание");
+        Tasks.generateArray();
+        System.out.println("\n12 задание");
+        Tasks.changeArray2();
+        System.out.println("\n13 задание");
+        Tasks.diagonalArray();
+        System.out.println("\n14 задание");
+        Tasks.printArray(Tasks.createArray(4,5));
     }
 }

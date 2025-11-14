@@ -57,9 +57,83 @@ public class Tasks {
     static boolean checkNumb(int a) {
         if (a < 0) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
+    }
+
+    static void printString(int a, String s) {
+        for (int i = 0; i < a; i++) {
+            System.out.println(s);
+        }
+    }
+
+    static boolean checkYear(int year) {
+        if (year % 400 == 0) {
+            return true;
+        }
+        if (year % 100 == 0) {
+            return false;
+        } else {
+            return year % 4 == 0;
+        }
+    }
+
+    static void changeArray() {
+        int[] array = new int[]{1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == 1) {
+                array[i] = 0;
+            } else {
+                array[i] = 1   ;
+            }
+        }
+        printArray(array);
+    }
+
+    static void printArray(int[]array){
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+    }
+
+    static void generateArray(){
+        int[] array = new int[101];
+        for (int i = 0; i <101;i++ ){
+            array[i]=i;
+        }
+        printArray(array);
+    }
+    static void changeArray2(){
+        int [] array = new int[] { 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 };
+        for  (int i=0;i<array.length;i++){
+            if (array[i]<6){
+                array[i]=array[i]*2;
+            }
+        }
+        printArray(array);
+    }
+
+    static void diagonalArray(){
+        int[][] array = new int[5][5];
+
+        for (int i = 0; i < array.length; i++) {
+            array[i][i] = 1;
+            array[i][array.length - 1 - i] = 1;
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.print(array[i][j]);
+            }
+            System.out.println();
+        }
+    }
+    static int[] createArray(int len,int initialValue){
+        int [] array = new int[len];
+        for (int i=0; i< array.length;i++){
+            array[i] = initialValue;
+        }
+        return array;
     }
 }
