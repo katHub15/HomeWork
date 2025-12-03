@@ -1,37 +1,40 @@
 package task1;
 
 public class Main {
-
     public static void main(String[] args) {
-        Dog dog1 = new Dog("пес");
-        Dog dog2 = new Dog("пес");
-        Cat cat1 = new Cat("кошак");
 
-        dog1.run(125);
-        dog1.run(650);
-        dog2.swim(9);
-        dog2.swim(11);
-        System.out.println();
-        cat1.swim(25);
-        cat1.run(195);
-        cat1.run(215);
+        String[][] correct = {
+                {"1", "2", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}
+        };
 
-        System.out.println();
-        System.out.println("количество собак " + dog1.getCountDog());
-        System.out.println("количество котов " + cat1.getCountCat());
-        System.out.println("количество животных " + cat1.getCountAnimal());
+        String[][] invalidData = {
+                {"1", "2", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "X", "11", "12"},
+                {"13", "14", "15", "16"}
+        };
 
-        System.out.println();
-        Cat cat2 = new Cat("барсик");
-        Cat cat3 = new Cat("персик");
-        Cat[] cats = {cat1, cat2, cat3};
-        Bowl bowl = new Bowl();
-        bowl.setFood(50);
-        System.out.println("количество еды в миске " + bowl.getFood());
-        for (Cat cat : cats) {
-            cat.eat(bowl, 20);
-            cat.getSatiety();
+        String[][] wrongSizeArray = {
+                {"1", "2"},
+                {"3", "4"}
+        };
+        try {
+            int result = Processor.processArray(invalidData);
+            System.out.println("Сумма = " + result);
+
+        } catch (Size | Data e) {
+            System.out.println("Ошибка: " + e.getMessage());
+        }
+
+        System.out.println("\n Выход за пределы массива:");
+        try {
+            int[] arr = {1, 2, 3};
+            System.out.println(arr[10]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Поймано исключение: " + e);
         }
     }
-
 }
