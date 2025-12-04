@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Задание 1");
+        System.out.println("\nЗадание 1");
         Student student1 = new Student("Иванов Александр", 1, 1, new double[]{3.5, 4.0, 5.0});
         Student student2 = new Student("Сидирова Инна", 2, 2, new double[]{2.5, 3.0, 4.0});
         Student student3 = new Student("Волков Дмитрий", 1, 1, new double[]{5.0, 4.5, 4.5});
@@ -25,7 +25,7 @@ public class Main {
         System.out.println("Студенты которых перевели на 3 курс ");
         manager.printStudents(3);
 
-        System.out.println("Задание 2");
+        System.out.println("\nЗадание 2");
         PhoneBook phoneBook = new PhoneBook();
 
         phoneBook.add("Иванов Александр", "123-456-789");
