@@ -2,22 +2,33 @@ package mtsTest;
 
 import base.BaseSelenium;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestContinueButtonFunctionality extends BaseSelenium {
 
     @Test
     public void testContinueButtonFunctionality() {
-        mainPage.acceptCookiesIfPresent();
+        acceptCookiesIfPresent();
+        WebElement phoneInput = driver.findElement(By.xpath("//input[@id='connection-phone']"));
+        WebElement sumInput = driver.findElement(By.xpath("//input[@id='connection-sum']"));
+        WebElement continueButton = driver.findElement(By.xpath("//button[text()='Продолжить']"));
 
-        assertAll(
-                () -> assertTrue(mainPage.getVisaPayment(), "Логотип виза не отображается"),
-                () -> assertTrue(mainPage.getVisaVerifiedPayment(), "Логотип верифайд виза не отображается"),
-                () -> assertTrue(mainPage.getMasterCardPayment(), "Логотип мастер карт не отображается"),
-                () -> assertTrue(mainPage.getMasterSecurePayment(), "Логотип мастер секьюр карт не отображается"),
-                () -> assertTrue(mainPage.getBelcardPayment(), "Логотип белкарт не отображается")
-        );
+        phoneInput.sendKeys(PHONE_NUMBER);
+        sumInput.sendKeys("10");
+        continueButton.click();
+
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//*[@class='bepaid-iframe']")));
+        wait.until(ExpectedConditions.textToBePresentInElement(
+                driver.findElement(By.xpath("//div[@class='pay-description__text']/span")),
+                PHONE_NUMBER
+        ));
+        WebElement sumText = driver.findElement(By.xpath("//div[@class='pay-description__cost']/span"));
+
+        assertEquals("10.00 BYN", sumText.getText());
+
     }
 }

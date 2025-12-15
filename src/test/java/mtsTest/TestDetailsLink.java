@@ -2,18 +2,19 @@ package mtsTest;
 
 import base.BaseSelenium;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static pageObject.MainPage.DETAILS_BUTTON_LINK;
 
 public class TestDetailsLink extends BaseSelenium {
 
     @Test
     public void testDetailsLink() {
-        mainPage.acceptCookiesIfPresent();
+        WebElement detailsService = driver.findElement(By.xpath("//a[text() = 'Подробнее о сервисе']"));
 
-        assertEquals(DETAILS_BUTTON_LINK,
-                mainPage.getDetailsLink()
+        assertEquals("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/",
+                detailsService.getAttribute("href")
         );
     }
 }
